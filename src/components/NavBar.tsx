@@ -1,7 +1,12 @@
+import { auth, signIn } from "@/auth";
 import Link from "next/link";
+import { Button } from "./ui/button";
+import { User } from "lucide-react";
+import UserButton from "./UserButton";
 
-export default function NavBar() {
-  // TODO: Show the currently logged-in user
+export default async function NavBar() {
+  const session = await auth();
+  const user = session?.user;
 
   return (
     <header className="sticky top-0 bg-background px-3 shadow-sm">
@@ -9,7 +14,21 @@ export default function NavBar() {
         <Link href="/" className="font-bold">
           Next-Auth
         </Link>
+        {user ? <UserButton user={user} /> : <SignInButton />}
       </nav>
     </header>
+  );
+}
+
+function SignInButton() {
+  return (
+    <form
+      action={async () => {
+        "use server";
+        await signIn();
+      }}
+    >
+      <Button type="submit">Sign In</Button>
+    </form>
   );
 }
