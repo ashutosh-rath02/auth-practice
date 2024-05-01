@@ -1,7 +1,6 @@
 import { auth, signIn } from "@/auth";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import { User } from "lucide-react";
 import UserButton from "./UserButton";
 
 export default async function NavBar() {
