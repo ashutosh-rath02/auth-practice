@@ -2,7 +2,6 @@ import { auth } from "@/auth";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";
 import getSession from "@/lib/getSession";
-import { get } from "http";
 
 export const metadata: Metadata = {
   title: "Admin",
